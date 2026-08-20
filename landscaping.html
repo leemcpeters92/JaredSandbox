@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Landscaping Portfolio - Jared Conbeer Construction</title>
+  <link rel="icon" type="image/x-icon" href="/jaredlogo2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header: Note the updated links pointing back to index.html -->
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="brand">
+          <img src="/jaredlogo2.png" alt="Logo" class="nav-logo">Jared Conbeer Construction, LLC
+        </a>
+        <button class="hamburger" aria-label="Toggle navigation">&#9776;</button>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#services">Services</a>
+          <a href="index.html#portfolios">Portfolios</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <h1 class="section-title" style="text-align: center;">Landscaping Portfolio</h1>
+        <p style="text-align: center; margin-bottom: 50px; opacity: 0.8;">
+          Original landscaping curated to your preferences.
+        </p>
+
+        <!-- New Gallery Grid -->
+        <div class="page-gallery-grid">
+          <!-- Add your actual image URLs below -->
+          <div class="page-gallery-item" style="background-image: url('landone.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landtwo.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landthree.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landfour.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landfive.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landsix.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landseven.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landeight.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landnine.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landten.jpeg')"></div>
+          <div class="page-gallery-item" style="background-image: url('landeleven.jpeg')"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Lee McPeters. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navItems = document.querySelectorAll('.nav-links a'); 
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+  
+</body>
+</html>

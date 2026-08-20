@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jared Conbeer Construction</title>
+  <link rel="icon" type="image/x-icon" href="/jaredlogo2.png">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="brand"><img src="/jaredlogo2.png" alt="Logo" class="nav-logo">Jared Conbeer Construction, LLC</a>
+        <button class="hamburger" aria-label="Toggle navigation">&#9776;</button>
+        <div class="nav-links">
+  <a href="#services">Services</a>
+  <a href="#portfolios">Portfolios</a>
+  <a href="#contact">Contact</a>
+</div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Artistry At Its Finest</h1>
+        <p>Combining Historical Craftsmanship with Advanced Innovation</p>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title">Services</h2>
+        <div class="grid-4">
+          <div class="card">
+            <h3>Historical Recreation</h3>
+            <p>Accurate restorations built with care and attention to detail</p>
+          </div>
+          <div class="card">
+            <h3>General Contracting</h3>
+            <p>Execution of complex residential and commercial projects from ground-breaking to completion</p>
+          </div>
+          <div class="card">
+            <h3>Cabinetry</h3>
+            <p>Beautiful custom kitchens, baths and, built-ins purposed with functionality </p>
+          </div>
+          <div class="card">
+            <h3>Millwork</h3>
+            <p>Authentic mouldings and trim with the capacity to replicate any original profile</p>
+          </div>
+          <div class="card">
+            <h3>Landscaping</h3>
+            <p>Original Landscaping curated to your preferences</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="portfolios" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Portfolios</h2>
+    <div class="portfolio-grid">
+      
+      <!-- Historical Recreation Link 
+      <a href="historical.html" class="portfolio-card" style="background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80')">
+        <div class="portfolio-overlay">
+          <h3>Historical Recreation</h3>
+        </div>
+      </a>-->
+
+      <!-- General Contracting Link 
+      <a href="contracting.html" class="portfolio-card" style="background-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80')">
+        <div class="portfolio-overlay">
+          <h3>General Contracting</h3>
+        </div>
+      </a>-->
+
+      <!-- Cabinetry Link 
+      <a href="cabinetry.html" class="portfolio-card" style="background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80')">
+        <div class="portfolio-overlay">
+          <h3>Cabinetry</h3>
+        </div>
+      </a>-->
+
+      <!-- Millwork Link 
+      <a href="millwork.html" class="portfolio-card" style="background-image: url('https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80')">
+        <div class="portfolio-overlay">
+          <h3>Millwork</h3>
+        </div>
+      </a>-->
+    
+      <!-- Landscaping Link -->
+      <a href="landscaping.html" class="portfolio-card" style="background-image: url('landone.jpeg')">
+        <div class="portfolio-overlay">
+          <h3>Landscaping</h3>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+    <section id="contact" class="section">
+      <div class="container contact-content">
+        <div class="contact-info">
+          <h2 class="section-title">Contact Us</h2>
+          <p>Ready to start a project? Reach out for a consultation.</p>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> jared@jaredconbeerconstructionllc.com</li>
+            <li><strong>Phone:</strong> (518) 775-7348</li>
+            <li><strong>Location:</strong> 788 Mckinley Rd. Palatine Bridge, NY</li>
+          </ul>
+        <!--</div>
+        <form class="contact-form">
+          <input type="text" placeholder="Name" required>
+          <input type="email" placeholder="Email" required>
+          <textarea placeholder="Tell us about your project..." rows="5" required></textarea>
+          <button type="submit" class="btn">Send Inquiry</button>
+        </form>
+      </div>-->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Lee McPeters. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    // Select all the links inside the navigation menu
+    const navItems = document.querySelectorAll('.nav-links a'); 
+
+    // Toggle the menu when clicking the hamburger icon
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close the menu when clicking any of the links
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+  
+</body>
+</html>

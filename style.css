@@ -1,0 +1,286 @@
+/* Tokens */
+:root {
+  --bg: #0f1110;
+  --surface: #171b1a;
+  --text: #f2f0ea;
+  --accent: #c8b28a;
+  --line: rgba(242, 240, 234, 0.1);
+  --serif: "Libre Baskerville", serif;
+  --sans: "Inter", sans-serif;
+}
+
+/* Reset & Base */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.6;
+}
+.container {
+  max-width: 1350px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+a { text-decoration: none; color: inherit; }
+
+/* Header */
+.site-header {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  background: rgba(15, 17, 16, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.brand { font-family: var(--serif); font-size: 1.5rem; color: var(--accent); }
+.nav-links a { margin-left: 20px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Sections */
+.section { padding: 80px 0; }
+.section-alt { background-color: var(--surface); }
+.section-title { font-family: var(--serif); font-size: 2.5rem; margin-bottom: 30px; }
+
+/* Hero */
+.hero {
+  padding: 120px 0;
+  text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1549497538-303791108f95?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+}
+.hero h1 { font-family: var(--serif); font-size: 3rem; margin: 0; }
+
+/* Grids */
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 10px;
+}
+.card {
+  padding: 30px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.card h3 { color: var(--accent); font-family: var(--serif); }
+
+/* Portfolios */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 15px;
+}
+
+.portfolio-card {
+  display: block;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Lift effect on hover */
+.portfolio-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Dark overlay so the text is readable */
+.portfolio-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+/* Lighten the overlay slightly on hover */
+.portfolio-card:hover .portfolio-overlay {
+  background: rgba(0, 0, 0, 0.2); 
+}
+
+.portfolio-overlay h3 {
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  margin: 0;
+  text-align: center;
+  padding: 0 15px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+}
+
+/* Contact Form */
+.contact-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 50px;
+  justify-items: center;
+  text-align: center;
+}
+.contact-info,
+.contact-form {
+  width: 100%;
+  max-width: 520px;
+}
+.contact-list { list-style: none; padding: 0; }
+.contact-list li { margin-bottom: 10px; }
+.contact-form { display: flex; flex-direction: column; gap: 15px; }
+input, textarea {
+  padding: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: #fff;
+  border-radius: 4px;
+}
+.btn {
+  padding: 15px;
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 40px 0;
+  border-top: 1px solid var(--line);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* --- Mobile Navigation & Layout Updates --- */
+
+/* Hide the hamburger icon by default (on desktop) */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Mobile Media Query */
+@media (max-width: 768px) {
+  .nav {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Make the brand name slightly smaller and flexible */
+  .brand {
+    font-size: 1.1rem; /* Reduced from 1.5rem to fit on small screens */
+    flex: 1;           /* Allows the name to take the available space */
+    margin-right: 10px;
+    display: flex;     /* Keeps the logo and text aligned if you added a logo */
+    align-items: center;
+  }
+
+  /* Ensure the hamburger button doesn't shrink or move */
+  .hamburger {
+    display: block;
+    flex-shrink: 0;   /* Prevents the button from being squashed or pushed down */
+    order: 2;         /* Positions it after the brand */
+  }
+
+  /* Force the menu links to drop to a new line */
+  .nav-links {
+    display: none;
+    width: 100%;      /* Takes up 100% width to force it to the next 'row' */
+    order: 3;         /* Positions the menu items below the brand/hamburger */
+    flex-direction: column;
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  /* Space out the mobile links */
+  .nav-links a {
+    margin: 15px 0;
+    display: block;
+  }
+
+  /* Center the wrapped items in Services and Portfolios */
+  .grid-4, .portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Give the cards a flexible width so they stay centered without stretching too far */
+  .card, .portfolio-card {
+    width: 100%;
+    max-width: 350px; 
+  }
+}
+
+/* Styling for the navbar brand and logo */
+.brand {
+  display: flex;
+  align-items: center; /* Vertically aligns logo and text */
+  gap: 15px;           /* Adds space between logo and text */
+}
+
+.nav-logo {
+  height: 40px;        /* Adjust this to fit your header height */
+  width: auto;
+}
+
+/* --- Sub-Page Gallery Styles --- */
+.page-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.page-gallery-item {
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  cursor: pointer;
+}
+
+/* Smooth zoom effect on hover */
+.page-gallery-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border-color: rgba(242, 240, 234, 0.3);
+}
+
+/* Mobile Media Query Addition for the new gallery */
+@media (max-width: 768px) {
+  .page-gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .page-gallery-item {
+    width: 100%;
+    max-width: 350px; 
+  }
+}

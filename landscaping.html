@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Landscaping Portfolio - Jared Conbeer Construction</title>
-  <link rel="icon" type="image/x-icon" href="/jaredlogo2.png">
+  <link rel="icon" type="image/x-icon" href="jaredlogo2.png">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -15,7 +15,7 @@
     <div class="container">
       <nav class="nav">
         <a href="index.html" class="brand">
-          <img src="/jaredlogo2.png" alt="Logo" class="nav-logo">Jared Conbeer Construction, LLC
+          <img src="jaredlogo2.png" alt="Logo" class="nav-logo">Jared Conbeer Construction, LLC
         </a>
         <button class="hamburger" aria-label="Toggle navigation">&#9776;</button>
         <div class="nav-links">
@@ -62,19 +62,90 @@
     </div>
   </footer>
 
+ <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <span class="nav-arrow prev-arrow">&#10094;</span> <!-- Left Arrow -->
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Enlarged gallery image">
+    <span class="nav-arrow next-arrow">&#10095;</span> <!-- Right Arrow -->
+  </div>
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links a'); 
+    // --- NEW: Lightbox Logic with Navigation ---
+    const galleryItems = document.querySelectorAll('.page-gallery-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close-lightbox');
+    const prevBtn = document.querySelector('.prev-arrow');
+    const nextBtn = document.querySelector('.next-arrow');
 
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+    let currentIndex = 0; // Keeps track of which image is open
+
+    // Helper function to extract the image URL
+    function getImageUrl(item) {
+      const bgImage = item.style.backgroundImage;
+      return bgImage.slice(4, -1).replace(/["']/g, "");
+    }
+
+    // Helper function to change the image based on index
+    function showImage(index) {
+      // If we go past the end, loop back to the first image
+      if (index >= galleryItems.length) {
+        currentIndex = 0;
+      } 
+      // If we go past the beginning, loop to the last image
+      else if (index < 0) {
+        currentIndex = galleryItems.length - 1;
+      } 
+      else {
+        currentIndex = index;
+      }
+      
+      lightboxImg.src = getImageUrl(galleryItems[currentIndex]);
+    }
+
+    // Open lightbox on image click
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        currentIndex = index; // Save the clicked image's index
+        showImage(currentIndex);
+        lightbox.classList.add('active');
+      });
     });
 
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-      });
+    // Close lightbox when clicking the 'X'
+    closeBtn.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    // Close lightbox when clicking the dark background
+    lightbox.addEventListener('click', (e) => {
+      // Make sure we aren't clicking the image or the navigation arrows
+      if (e.target !== lightboxImg && e.target !== prevBtn && e.target !== nextBtn) {
+        lightbox.classList.remove('active');
+      }
+    });
+
+    // Mouse Navigation: Next and Previous Buttons
+    prevBtn.addEventListener('click', () => {
+      showImage(currentIndex - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      showImage(currentIndex + 1);
+    });
+
+    // Keyboard Navigation: Arrow Keys and Escape Key
+    document.addEventListener('keydown', (e) => {
+      // Only trigger if the lightbox is actually open
+      if (!lightbox.classList.contains('active')) return;
+
+      if (e.key === 'ArrowLeft') {
+        showImage(currentIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        showImage(currentIndex + 1);
+      } else if (e.key === 'Escape') {
+        lightbox.classList.remove('active');
+      }
     });
   </script>
   
